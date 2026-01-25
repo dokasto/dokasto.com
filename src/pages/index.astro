@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+
+const blogPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Dokasto's blog - Technical thoughts and explorations" />
+    <title>Dokasto</title>
+  </head>
+  <body>
+    <Header />
+
+    <main class="px-6 max-w-4xl mx-auto pb-16">
+      <div class="space-y-8">
+        {blogPosts.map((post) => (
+          <article class="border-b border-current/20 pb-6">
+            <a href={`/blog/${post.slug}/`} class="block hover:opacity-70 transition-opacity">
+              <h2 class="text-xl font-bold mb-2">{post.data.title}</h2>
+              <time class="text-sm opacity-70" datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              <p class="mt-2 opacity-80">{post.data.description}</p>
+            </a>
+          </article>
+        ))}
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+---
+// Giscus comments component
+---
+
+<div class="giscus mt-12 pt-8 border-t border-current/20"></div>
+
+<script>
+  const script = document.createElement('script');
+  script.src = 'https://giscus.app/client.js';
+  script.setAttribute('data-repo', 'dokasto/dokasto.com');
+  script.setAttribute('data-repo-id', ''); // Will be populated after enabling discussions
+  script.setAttribute('data-category', 'General');
+  script.setAttribute('data-category-id', ''); // Will be populated after enabling discussions
+  script.setAttribute('data-mapping', 'pathname');
+  script.setAttribute('data-strict', '0');
+  script.setAttribute('data-reactions-enabled', '1');
+  script.setAttribute('data-emit-metadata', '0');
+  script.setAttribute('data-input-position', 'bottom');
+  script.setAttribute('data-theme', 'light');
+  script.setAttribute('data-lang', 'en');
+  script.setAttribute('crossorigin', 'anonymous');
+  script.async = true;
+
+  document.querySelector('.giscus')?.appendChild(script);
+</script>
