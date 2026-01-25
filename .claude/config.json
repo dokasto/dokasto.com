@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "astro": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@astrolicious/mcp"
+      ]
+    }
+  }
+}

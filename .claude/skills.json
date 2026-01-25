@@ -1,0 +1,12 @@
+{
+  "skills": [
+    {
+      "name": "vercel-react-best-practices",
+      "url": "https://skills.sh/vercel-labs/agent-skills/vercel-react-best-practices"
+    },
+    {
+      "name": "frontend-design",
+      "url": "https://skills.sh/anthropics/skills/frontend-design"
+    }
+  ]
+}
