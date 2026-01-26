@@ -7,6 +7,8 @@ import mdx from '@astrojs/mdx';
 
 import react from '@astrojs/react';
 
+import sitemap from '@astrojs/sitemap';
+
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
@@ -24,5 +26,5 @@ export default defineConfig({
     rehypePlugins: [rehypeKatex]
   },
 
-  integrations: [mdx(), react()]
+  integrations: [mdx(), react(), sitemap()]
 });

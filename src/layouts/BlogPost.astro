@@ -8,12 +8,45 @@ interface Props {
   title: string;
   description?: string;
   pubDate: Date;
+  ogImage?: string;
 }
 
-const { title, description, pubDate } = Astro.props;
+const { title, description, pubDate, ogImage } = Astro.props;
+
+// JSON-LD structured data for article
+const articleStructuredData: Record<string, any> = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description || "Technical article by Udo Nkwocha",
+  "author": {
+    "@type": "Person",
+    "name": "Udo Nkwocha",
+    "url": "https://dokasto.com"
+  },
+  "datePublished": pubDate.toISOString(),
+  "dateModified": pubDate.toISOString(),
+  "publisher": {
+    "@type": "Person",
+    "name": "Udo Nkwocha"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": new URL(Astro.url.pathname, Astro.site).href
+  }
+};
+
+if (ogImage) {
+  articleStructuredData["image"] = new URL(ogImage, Astro.site).href;
+}
 ---
 
-<BaseLayout title={`${title} | Udo Nkwocha`} description={description}>
+<BaseLayout
+  title={`${title} | Udo Nkwocha`}
+  description={description}
+  ogType="article"
+  ogImage={ogImage}
+>
   <link
     slot="head"
     rel="stylesheet"
@@ -21,6 +54,9 @@ const { title, description, pubDate } = Astro.props;
     integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
     crossorigin="anonymous"
   />
+
+  <!-- JSON-LD Structured Data -->
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(articleStructuredData)} />
 
   <Header />
 

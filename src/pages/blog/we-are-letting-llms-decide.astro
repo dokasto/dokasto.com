@@ -6,7 +6,7 @@ import InteractiveScoring from '../../components/scoring/InteractiveScoring';
 
 const metadata = {
   title: "We are Letting LLMs Decide Who Gets Hired and Doing It Wrong",
-  description: "Welcome to my blog - a space for technical thoughts and explorations",
+  description: "Most companies use LLMs to score interviews like scoring essays—ask for a rating and hope for the best. Here's why that fails and how to build auditable, defensible AI-assisted hiring using structured rubrics, evidence extraction, and proper decision models.",
   pubDate: new Date('2026-01-25')
 };
 
@@ -87,11 +87,11 @@ const metadata = {
 
 <p>Now the LLM's job is not to "judge the candidate". It's to <em>match the transcript and artifacts to the rubric's behavior statements</em>. For each behavior under each level (for example: "Struggles to break the problem into steps or pick a workable approach"), the model should extract the best supporting evidence from the interview artifacts (transcript, code, and any diagram) and return it with a <strong>direct link to the exact transcript line(s)</strong> so a human reviewer can verify the claim.</p>
 
-<p>If it can't find evidence, it must say "insufficient evidence" rather than guessing. This "cite before you speak" constraint makes the output harder to steer and easy to audit: every rating is backed by something you can verify.<sup><a href="#ref-11">[11]</a></sup></p>
+<p>If it can't find evidence, it must say "insufficient evidence" rather than guessing. This "cite before you speak" constraint makes the output harder to steer and easy to audit: every rating is backed by something you can verify.<sup><a href="#ref-5">[5]</a></sup></p>
 
 <p><strong>Prompt construction is critical here.</strong> Explicitly instruct the model to extract the <em>shortest transcript segment</em> that demonstrates the behavior. This mitigates verbosity bias, where longer responses are favored regardless of substance.</p>
 
-<p>Not all models ground equally well, so you can measure it. Zeng et al. propose <strong>Claim Grounding Rate (CGR)</strong>: the fraction of claims supported by the evidence set (higher is better).<sup><a href="#ref-11">[11]</a></sup></p>
+<p>Not all models ground equally well, so you can measure it. Zeng et al. propose <strong>Claim Grounding Rate (CGR)</strong>: the fraction of claims supported by the evidence set (higher is better).<sup><a href="#ref-5">[5]</a></sup></p>
 
 <div class="formula-katex">
   <span class="katex-display">
@@ -187,12 +187,14 @@ const metadata = {
 <ol>
   <li id="ref-1">[1] Zheng et al. <em>Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena</em>. arXiv:2306.05685. <a href="https://arxiv.org/abs/2306.05685" target="_blank" rel="noreferrer">https://arxiv.org/abs/2306.05685</a></li>
   <li id="ref-2">[2] Ansari et al. <em>Evaluating Cascaded Speech-to-Text–LLM–Text-to-Speech Systems</em>. arXiv:2507.16835. <a href="https://arxiv.org/html/2507.16835v1" target="_blank" rel="noreferrer">https://arxiv.org/html/2507.16835v1</a></li>
+  <li id="ref-3">[3] Gaebler, Goel, Huq, Tambe. <em>Auditing the Use of Language Models to Guide Hiring Decisions</em>. arXiv:2404.03086. <a href="https://arxiv.org/abs/2404.03086" target="_blank" rel="noreferrer">https://arxiv.org/abs/2404.03086</a></li>
+  <li id="ref-4">[4] Filatova, Zelenchuk, Filatov. <em>AI-Driven Decision-Making System for Hiring Process</em>. arXiv:2512.20652. <a href="https://arxiv.org/abs/2512.20652" target="_blank" rel="noreferrer">https://arxiv.org/abs/2512.20652</a></li>
+  <li id="ref-5">[5] Zeng et al. <em>Cite Before You Speak: Enhancing Context-Response Grounding in E-commerce Conversational LLM-Agents</em>. arXiv:2503.04830. <a href="https://arxiv.org/abs/2503.04830" target="_blank" rel="noreferrer">https://arxiv.org/abs/2503.04830</a></li>
   <li id="ref-6">[6] Google re:Work. <em>Use structured interviewing</em>. <a href="https://rework.withgoogle.com/intl/en/guides/hiring-use-structured-interviewing" target="_blank" rel="noreferrer">https://rework.withgoogle.com/intl/en/guides/hiring-use-structured-interviewing</a></li>
   <li id="ref-7">[7] Smith &amp; Kendall (1963). <em>Retranslation of expectations</em> (Citation Classic summary). <a href="https://garfield.library.upenn.edu/classics1983/A1983RB10200001.pdf" target="_blank" rel="noreferrer">https://garfield.library.upenn.edu/classics1983/A1983RB10200001.pdf</a></li>
   <li id="ref-8">[8] Kline &amp; Sulsky (2009). <em>Measurement and Assessment Issues in Performance Appraisal</em>. Canadian Psychology. <a href="https://stevenmbrownportfolio.weebly.com/uploads/1/7/4/6/17469871/measurement_issues.pdf" target="_blank" rel="noreferrer">https://stevenmbrownportfolio.weebly.com/uploads/1/7/4/6/17469871/measurement_issues.pdf</a></li>
   <li id="ref-9">[9] Klieger et al. (2018). <em>Development of the Behaviorally Anchored Rating Scales for the Skills Demonstration and Progression Guide</em> (BSS discussion). <a href="https://files.eric.ed.gov/fulltext/EJ1202769.pdf" target="_blank" rel="noreferrer">https://files.eric.ed.gov/fulltext/EJ1202769.pdf</a></li>
   <li id="ref-10">[10] Google. <em>Interview grading rubric</em> (example). <a href="https://docs.google.com/document/d/1iPw2p90HbEciKpt84JSVwefFnYtkN_W3X9SVV6FtvCg/edit" target="_blank" rel="noreferrer">https://docs.google.com/document/d/1iPw2p90HbEciKpt84JSVwefFnYtkN_W3X9SVV6FtvCg/edit</a></li>
-  <li id="ref-11">[11] Zeng et al. <em>Cite Before You Speak: Enhancing Context-Response Grounding in E-commerce Conversational LLM-Agents</em>. arXiv:2503.04830. <a href="https://arxiv.org/abs/2503.04830" target="_blank" rel="noreferrer">https://arxiv.org/abs/2503.04830</a></li>
   <li id="ref-12">[12] Schmidt &amp; Hunter (1998). <em>The Validity and Utility of Selection Methods in Personnel Psychology</em>. Psychological Bulletin. <a href="https://www.researchgate.net/profile/Frank-Schmidt-2/publication/232564809_The_Validity_and_Utility_of_Selection_Methods_in_Personnel_Psychology/links/53e2938f0cf216e8321e0625/The-Validity-and-Utility-of-Selection-Methods-in-Personnel-Psychology.pdf" target="_blank" rel="noreferrer">PDF</a></li>
   <li id="ref-13">[13] Sackett &amp; Roth (1996). <em>Multi-stage selection strategies: A Monte Carlo investigation of effects on performance and minority hiring</em>. Personnel Psychology. <a href="https://onlinelibrary.wiley.com/doi/pdf/10.1111/j.1744-6570.1996.tb01584.x" target="_blank" rel="noreferrer">PDF</a></li>
   <li id="ref-14">[14] Guion (2011). <em>Assessment, Measurement, and Prediction for Personnel Decisions</em> (2nd ed.). Routledge. <a href="https://www.taylorfrancis.com/books/mono/10.4324/9780203836767/assessment-measurement-prediction-personnel-decisions-robert-guion" target="_blank" rel="noreferrer">https://www.taylorfrancis.com/books/mono/10.4324/9780203836767/assessment-measurement-prediction-personnel-decisions-robert-guion</a></li>
