@@ -26,14 +26,14 @@ const metadata = {
 
   <p><strong>There's a new person in the hiring room. Nobody interviewed them. Nobody trained them. And nobody can fire them.</strong></p>
 
-  <p>I've spent 400-plus hours interviewing software engineering candidates. Only recently did I start using LLMs to help draft my feedback, and I get why it's tempting. Writing notes after back-to-back interviews is tedious, and with every hour that passes, context evaporates.</p>
+  <p>I've spent over 400 hours interviewing software engineering candidates. Only recently did I start using LLMs to help draft my feedback, and I get why it's tempting. Writing notes after back-to-back interviews is tedious, and with every hour that passes, context evaporates.</p>
 
   <p>But it's not just me. With transcription tools everywhere now, LLM-assisted evaluations are becoming an interviewer's tool in the hiring arsenal.</p>
 
   <p>I felt the risk firsthand outside of work during a mock interview. I used ChatGPT to transcribe the session, dropped the same transcript into an evaluation template, and watched how easily the outcome could be steered. With a few prompt tweaks, the same performance could read as impressive or shaky.</p>
 
   <p>Trying to interview without transcription or LLM help isn't a great alternative either. It's hard to meaningfully engage in a conversation while typing notes, and if you don't capture things in the moment, you forget more than you think.</p>
-  <p>So the question isn't whether LLMs will be used in hiring. It's how to design a workflow around them that's auditable, responsible, and justifiable.</p>
+  <p>So the question isn't whether LLMs should be used in hiring. It's how to design a workflow around them that's auditable, responsible, and justifiable.</p>
 
 <p>Over the last few weeks, I dug into that. I didn’t expect it to take me from Industrial-Organizational Psychology to computer science papers on arXiv, but it was genuinely exciting. Connecting those worlds gave me a first-draft approach to making LLM-assisted hiring safer, more consistent, and auditable.</p>
 
@@ -61,8 +61,8 @@ const metadata = {
 <p>This is not a new idea. Industrial-Organizational Psychology has three closely related ways to build rubrics:</p>
 
 <ul>
-  <li><strong>Behaviorally Anchored Rating Scales (BARS)</strong> is a rating scale where each score level is tied to concrete examples of what "good" and "bad" look like.<sup><a href="#ref-5">[5]</a></sup></li>
-  <li><strong>Behavioral Observation Scales (BOS)</strong> asks the interviewer to rate how often they observed specific behaviors (for example: "clarified requirements" or "tested assumptions").<sup><a href="#ref-6">[6]</a></sup></li>
+  <li><strong>Behaviorally Anchored Rating Scales (BARS)</strong> is a framework where each score level is tied to concrete examples of what "good" and "bad" look like.<sup><a href="#ref-5">[5]</a></sup></li>
+  <li><strong>Behavioral Observation Scales (BOS)</strong> asks the interviewer to rate how often they observed specific behaviors (for example, "clarified requirements" or "tested assumptions").<sup><a href="#ref-6">[6]</a></sup></li>
   <li><strong>Behavioral Summary Scales (BSS)</strong> is a simplified version of BARS that uses a few short behavior summaries (instead of lots of detailed anchors), making it easier for different interviewers to stay consistent.<sup><a href="#ref-7">[7]</a></sup></li>
 </ul>
 
@@ -85,9 +85,9 @@ const metadata = {
 
 <h3>3) Extract grounded evidence <i>("cite before you speak")</i></h3>
 
-<p>Now the LLM's job is not to "judge the candidate". It's to <em>match the transcript and artifacts to the rubric's behavior statements</em>. For each behavior under each level (for example: "Struggles to break the problem into steps or pick a workable approach"), the model should extract the best supporting evidence from the interview artifacts (transcript, code, and any diagram) and return it with a <strong>direct link to the exact transcript line(s)</strong> so a human reviewer can verify the claim.</p>
+<p>Now the LLM's job is not to "judge the candidate". It's to <em>match the transcript and artifacts to the rubric's behavior statements</em>. For each behavior under each level (for example, "Struggles to break the problem into steps or pick a workable approach"), the model should extract the best supporting evidence from the interview artifacts (transcript, code, and any diagram) and return it with a <strong>direct link to the exact transcript line(s)</strong> so a human reviewer can verify the claim.</p>
 
-<p>If it can't find evidence, it must say "insufficient evidence" rather than guessing. This "cite before you speak" constraint makes the output harder to steer and easy to audit: every rating is backed by something you can verify.<sup><a href="#ref-3">[3]</a></sup></p>
+<p>If it can't find evidence, it must say "insufficient evidence" rather than guessing. This "cite before you speak" constraint makes the output harder to steer and easier to audit: every rating is backed by something you can verify.<sup><a href="#ref-3">[3]</a></sup></p>
 
 <p><strong>Prompt construction is critical here.</strong> Explicitly instruct the model to extract the <em>shortest transcript segment</em> that demonstrates the behavior. This mitigates verbosity bias, where longer responses are favored regardless of substance.</p>
 
@@ -106,7 +106,7 @@ const metadata = {
   </span>
 </div>
 
-<p>You can push this further. Inspired by Andrej Karpathy's <a href="https://github.com/karpathy/llm-council" target="_blank" rel="noreferrer">LLM Council</a>, run evidence extraction with two or three different models (ideally from different providers). When all of them independently cite the same transcript lines for a behavior, that's a strong signal the evidence is real. When they disagree, you've surfaced a review point for the human-in-the-loop.</p>
+<p>You can push this further. Inspired by Andrej Karpathy's <a href="https://github.com/karpathy/llm-council" target="_blank" rel="noreferrer">LLM Council</a>, run evidence extraction with two or three different models (ideally from different providers). When all of them independently cite the same transcript lines for a behavior, that's a strong signal that the evidence is real. When they disagree, you've surfaced a review point for the human-in-the-loop.</p>
 
 <strong>Example: Multi-Model Evidence Extraction</strong>
 <RubricTree
