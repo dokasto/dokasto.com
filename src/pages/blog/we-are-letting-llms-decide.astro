@@ -6,7 +6,7 @@ import InteractiveScoring from '../../components/scoring/InteractiveScoring';
 
 const metadata = {
   title: "We are Letting LLMs Decide Who Gets Hired and Doing It Wrong",
-  description: "Most companies use LLMs to score interviews like scoring essays—ask for a rating and hope for the best. Here's why that fails and how to build auditable, defensible AI-assisted hiring using structured rubrics, evidence extraction, and proper decision models.",
+  description: "Most companies use LLMs to score interviews by asking for ratings without proper structure. Learn why this approach fails and how to build auditable, defensible AI-assisted hiring using structured rubrics, evidence extraction, and proper decision models.",
   pubDate: new Date('2026-01-25')
 };
 
@@ -26,25 +26,25 @@ const metadata = {
 
   <p><strong>There's a new person in the hiring room. Nobody interviewed them. Nobody trained them. And nobody can fire them.</strong></p>
 
-  <p>I've spent 400 plus hours interviewing software engineering candidates. Only recently did I start using LLMs to help draft my feedback, and I get why it's tempting. Writing notes after back-to-back interviews is tedious, and if you wait even a day the context evaporates.</p>
+  <p>I've spent 400-plus hours interviewing software engineering candidates. Only recently did I start using LLMs to help draft my feedback, and I get why it's tempting. Writing notes after back-to-back interviews is tedious, and with every hour that passes, context evaporates.</p>
 
-  <p>But it's not just me. With transcription tools everywhere now, LLM-assisted evaluations are becoming an interviewer's weapon in the hiring arsenal.</p>
+  <p>But it's not just me. With transcription tools everywhere now, LLM-assisted evaluations are becoming an interviewer's tool in the hiring arsenal.</p>
 
   <p>I felt the risk firsthand outside of work during a mock interview. I used ChatGPT to transcribe the session, dropped the same transcript into an evaluation template, and watched how easily the outcome could be steered. With a few prompt tweaks, the same performance could read as impressive or shaky.</p>
 
-  <p>Trying to interview without transcription or LLM help isn’t a great alternative either. It’s hard to meaningfully engage in a conversation while typing notes, and if you don’t capture things in the moment, you forget more than you think.</p>
-<p>So the question isn’t whether LLMs will be used in hiring. It’s how to design a workflow around them that’s auditable, responsible, and justifiable.</p>
+  <p>Trying to interview without transcription or LLM help isn't a great alternative either. It's hard to meaningfully engage in a conversation while typing notes, and if you don't capture things in the moment, you forget more than you think.</p>
+  <p>So the question isn't whether LLMs will be used in hiring. It's how to design a workflow around them that's auditable, responsible, and justifiable.</p>
 
-<p>Over the last few weeks, I dug into that. I didn’t expect it to take me from Industrial Organizational Psychology to computer science papers on arXiv, but it was genuinely exciting. Connecting those worlds gave me a first-draft approach to making LLM-assisted hiring safer, more consistent, and auditable.</p>
+<p>Over the last few weeks, I dug into that. I didn’t expect it to take me from Industrial-Organizational Psychology to computer science papers on arXiv, but it was genuinely exciting. Connecting those worlds gave me a first-draft approach to making LLM-assisted hiring safer, more consistent, and auditable.</p>
 
-<h2>The current <strike>reckless</strike> naive approach</h2>
+<h2>The current <strike>reckless</strike>, naive approach</h2>
 
 <p>Transcript + evaluation criteria + LLM prompt => paste the output into the hiring system. It’s fast, but it’s riddled with predictable failure modes:</p>
 
 <ol>
   <li><strong>Hallucinated details:</strong> LLMs can confidently invent "evidence"<sup><a href="#ref-1">[1]</a></sup></li>
   <li><strong>Verbosity bias:</strong> longer answers can be judged as better even when they add little substance (the “verbosity attack”).<sup><a href="#ref-1">[1]</a></sup></li>
-  <li><strong>Position and framing bias:</strong> if you show the model two options (A vs B), it often favors the one it sees first; swap the order and the verdict can flip. Even small changes in how you ask the question can change the verdict.<sup><a href="#ref-1">[1]</a></sup></li>
+  <li><strong>Position and framing bias:</strong> if you show the model two options (A vs. B), it often favors the one it sees first; swap the order, and the verdict can flip. Even small changes in how you ask the question can change the verdict.<sup><a href="#ref-1">[1]</a></sup></li>
   <li><strong>Transcript errors become decision errors:</strong> speech-to-text mistakes propagate downstream and can change the evaluation.<sup><a href="#ref-2">[2]</a></sup></li>
 </ol>
 
@@ -58,15 +58,15 @@ const metadata = {
 
 <h3>2) Use behaviorally anchored rubrics</h3>
 
-<p>This is not a new idea. Industrial and Organizational Psychology has three closely related ways to build rubrics:</p>
+<p>This is not a new idea. Industrial-Organizational Psychology has three closely related ways to build rubrics:</p>
 
 <ul>
-  <li><strong>BARS</strong> is a rating scale where each score level is tied to concrete examples of what "good" and "bad" look like.<sup><a href="#ref-5">[5]</a></sup></li>
-  <li><strong>BOS</strong> asks the interviewer to rate how often they observed specific behaviors during the interview (for example: "clarified requirements" or "tested assumptions").<sup><a href="#ref-6">[6]</a></sup></li>
-  <li><strong>BSS</strong> is a simplified version of BARS that uses a few short behavior summaries (instead of lots of detailed anchors), making it easier for different interviewers to stay consistent.<sup><a href="#ref-7">[7]</a></sup></li>
+  <li><strong>Behaviorally Anchored Rating Scales (BARS)</strong> is a rating scale where each score level is tied to concrete examples of what "good" and "bad" look like.<sup><a href="#ref-5">[5]</a></sup></li>
+  <li><strong>Behavioral Observation Scales (BOS)</strong> asks the interviewer to rate how often they observed specific behaviors (for example: "clarified requirements" or "tested assumptions").<sup><a href="#ref-6">[6]</a></sup></li>
+  <li><strong>Behavioral Summary Scales (BSS)</strong> is a simplified version of BARS that uses a few short behavior summaries (instead of lots of detailed anchors), making it easier for different interviewers to stay consistent.<sup><a href="#ref-7">[7]</a></sup></li>
 </ul>
 
-<p>For interviews, I think BSS is the best fit. Interview feedback is noisy, time-constrained, and often debated by reviewers. A small number of clearly described levels (for example: poor, mixed, good, excellent) is easier to calibrate across interviewers, and easier to audit later.</p>
+<p>For interviews, I think BSS is the best fit. Interview feedback is noisy, time-constrained, and often debated by reviewers. A small number of clearly described levels (for example: poor, mixed, good, excellent) are easier to calibrate across interviewers, and easier to audit later.</p>
 
 <strong>Example: Software Engineering Coding Interview Rubric</strong>
 <RubricTree
@@ -127,7 +127,7 @@ const metadata = {
 
 <p>Once the evidence is collected, scoring becomes a policy choice. The hiring team has to decide how to turn <em>behavior-level evidence</em> into a rating for each focus area, and then combine those focus areas into a final decision.</p>
 
-<p>In Industrial Organizational Psychology, a few common decision models show up repeatedly when combining signals:</p>
+<p>In Industrial-Organizational Psychology, a few common decision models show up repeatedly when combining signals:</p>
 
 <ul>
   <li><strong>Compensatory model:</strong> strong scores in one area can offset weaker scores in another (a weighted sum).<sup><a href="#ref-9">[9]</a></sup></li>
@@ -145,7 +145,7 @@ const metadata = {
   </span>
 </div>
 
-<p>For a given focus area (say <strong>Problem Solving</strong>), your rubric contains multiple behavior statements across levels. After evidence extraction, each behavior statement gets a score (only if there’s sufficient evidence). Then aggregate those behavior scores into a single focus-area score:</p>
+<p>For a given focus area (say, <strong>Problem Solving</strong>), your rubric contains multiple behavior statements across levels. After evidence extraction, each behavior statement gets a score (only if there's sufficient evidence). Then aggregate those behavior scores into a single focus-area score:</p>
 
 <div class="formula-katex">
   <span class="katex-display">
@@ -153,7 +153,7 @@ const metadata = {
   </span>
 </div>
 
-<p>Higher scores indicate more good/excellent behaviors, lower scores more poor behaviors.</p>
+<p>Higher scores indicate more good/excellent behaviors, and lower scores indicate more poor behaviors.</p>
 <div style="margin: 2rem 0;">
   <InteractiveScoring client:only="react" />
 </div>
@@ -177,7 +177,7 @@ const metadata = {
 
 <p>Platforms like Zoom, Google Meet, Teams, and CoderPad weren't built for interviewing in the age of AI. Sure, they have AI tools bolted on, but that just makes them <a href="https://koomen.dev/essays/horseless-carriages/" target="_blank" rel="noreferrer">AI horseless carriages</a>. The interview experience needs to be reimagined from the ground up. That's why I built <strong><a href="https://app.screenstack.tech/" target="_blank" rel="noreferrer">ScreenStack</a></strong>, an early prototype implementing this workflow.</p>
 
-<p>It brings transcript, code, and whiteboard into one place and captures code snapshots throughout the interview, so you see <em>how the candidate arrived at their solution</em>, not just the final result. This reveals problem-solving process far better than static artifacts. <a href="https://app.screenstack.tech/" target="_blank" rel="noreferrer">ScreenStack</a> applies the evidence-based approach from this article plus many other techniques to help teams make faster, more rigorous hiring decisions.</p>
+<p>It brings transcript, code, and whiteboard into one place and captures code snapshots throughout the interview, so you see <em>how the candidate arrived at their solution</em>, not just the final result. This reveals the problem-solving process far better than static artifacts. <a href="https://app.screenstack.tech/" target="_blank" rel="noreferrer">ScreenStack</a> applies the evidence-based approach from this article plus many other techniques to help teams make faster, more rigorous hiring decisions.</p>
 
 <p>Try it here: <a href="https://app.screenstack.tech/" target="_blank" rel="noreferrer">https://app.screenstack.tech/</a></p>
 
