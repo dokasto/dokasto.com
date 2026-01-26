@@ -1,0 +1,24 @@
+{
+  "projects": [
+    {
+      "title": "Saidia",
+      "github": "https://github.com/dokasto/Saidia",
+      "description": "A desktop AI-powered application that helps teachers generate exam questions from learning materials. Powered by the Gemma 3N language model, it runs entirely offline and on-device. Developed for the Google Gemma 3 Hackathon."
+    },
+    {
+      "title": "VeeCam",
+      "github": "https://github.com/dokasto/veecam",
+      "description": "This was a proof-of-concept virtual webcam that uses AI to apply video effects like background blurring (before it was popular in video calls) and other effects. I built it to solve my own poor lighting setup, it gained a few hundred users on the Chrome Web Store, and they requested new features but I abandoned it."
+    },
+    {
+      "title": "Moments",
+      "github": "https://github.com/dokasto/moments",
+      "description": "Imagine Wordle, but with pictures and AI that runs entirely on your device. It is a game that uses your own photos to generate words that you have to guess, just like Wordle. It ran on iOS and Android."
+    },
+    {
+      "title": "Simple Video Conferencing",
+      "github": "https://github.com/dokasto/simple-video-conferencing",
+      "description": "A video conferencing app built from scratch to understand real-time communication fundamentals (WebRTC, signaling, etc.)."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'success' | 'error';
+  title?: string;
+}
+
+const { type = 'info', title } = Astro.props;
+
+const colors = {
+  info: 'border-blue-500/30 bg-blue-500/5',
+  warning: 'border-yellow-500/30 bg-yellow-500/5',
+  success: 'border-green-500/30 bg-green-500/5',
+  error: 'border-red-500/30 bg-red-500/5'
+};
+---
+
+<div class={`callout border-l-4 p-4 my-4 ${colors[type]}`}>
+  {title && <div class="font-bold mb-2">{title}</div>}
+  <div class="callout-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .callout {
+    border-radius: 0.25rem;
+  }
+
+  .callout-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

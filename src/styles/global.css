@@ -5,6 +5,27 @@
   --color-cream: #fffed8;
   --color-dark: #404040;
 
+  --color-rubric-poor: #b42318;
+  --color-rubric-poor-bg: rgba(180, 35, 24, 0.10);
+  --color-rubric-mixed: #b54708;
+  --color-rubric-mixed-bg: rgba(181, 71, 8, 0.10);
+  --color-rubric-good: #175cd3;
+  --color-rubric-good-bg: rgba(23, 92, 211, 0.10);
+  --color-rubric-excellent: #027a48;
+  --color-rubric-excellent-bg: rgba(2, 122, 72, 0.10);
+
+  /* Model badge colors */
+  --color-model-gpt: #10a37f;
+  --color-model-gpt-bg: rgba(16, 163, 127, 0.10);
+  --color-model-claude: #cc785c;
+  --color-model-claude-bg: rgba(204, 120, 92, 0.10);
+  --color-model-gemini: #4285f4;
+  --color-model-gemini-bg: rgba(66, 133, 244, 0.10);
+
+  /* Consensus highlight */
+  --color-consensus: #027a48;
+  --color-consensus-bg: rgba(2, 122, 72, 0.15);
+
   --font-mono: 'Geist Mono', 'Courier New', monospace;
   --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -13,7 +34,7 @@ body {
   font-family: var(--font-mono);
   background-color: var(--color-cream);
   color: var(--color-dark);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.6;
 }

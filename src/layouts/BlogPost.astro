@@ -1,4 +1,5 @@
 ---
+import BaseLayout from './BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Comments from '../components/Comments.astro';
 import '../styles/global.css';
@@ -12,16 +13,16 @@ interface Props {
 const { title, description, pubDate } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description || 'Udo Nkwocha\'s blog'} />
-    <title>{title} | Udo Nkwocha</title>
-  </head>
-  <body>
-    <Header />
+<BaseLayout title={`${title} | Udo Nkwocha`} description={description}>
+  <link
+    slot="head"
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+    integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+    crossorigin="anonymous"
+  />
+
+  <Header />
 
     <main class="px-6 max-w-4xl mx-auto pb-16">
       <article class="prose prose-lg max-w-none">
@@ -43,8 +44,7 @@ const { title, description, pubDate } = Astro.props;
 
       <Comments />
     </main>
-  </body>
-</html>
+</BaseLayout>
 
 <style>
   :global(.blog-content p) {
@@ -101,5 +101,24 @@ const { title, description, pubDate } = Astro.props;
 
   :global(.blog-content li) {
     margin-bottom: 0.5rem;
+  }
+
+  :global(.blog-content blockquote) {
+    margin: 2rem auto;
+    padding-left: 1.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-style: italic;
+    opacity: 0.9;
+    border-left: 3px solid currentColor;
+    max-width: 80%;
+  }
+
+  :global(.blog-content blockquote p) {
+    margin-bottom: 0.25rem;
+  }
+
+  :global(.blog-content blockquote p:last-child) {
+    margin-bottom: 0;
   }
 </style>
