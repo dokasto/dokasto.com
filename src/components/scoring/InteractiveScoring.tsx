@@ -82,6 +82,30 @@ export default function InteractiveScoring() {
           background: rgba(0, 0, 0, 0.25) !important;
           transform: scale(0.95);
         }
+        .rating-container {
+          display: flex;
+          gap: 0.75rem;
+          margin-top: 0.5rem;
+          justify-content: center;
+          flex-wrap: nowrap;
+        }
+        .rating-box {
+          flex: 1;
+          max-width: 120px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          min-width: 0;
+        }
+        @media (max-width: 480px) {
+          .rating-container {
+            gap: 0.25rem;
+          }
+          .rating-box {
+            max-width: none;
+            flex: 1 1 auto;
+          }
+        }
       `}</style>
       <div
         style={{
@@ -316,15 +340,8 @@ export default function InteractiveScoring() {
       {/* Rating display */}
       <div style={{ marginTop: '1rem' }}>
         <strong>Final Rating:</strong>
-        <div
-          style={{
-            display: 'flex',
-            gap: '0.75rem',
-            marginTop: '0.5rem',
-            justifyContent: 'center',
-          }}
-        >
-          <div style={{ flex: 1, maxWidth: '120px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className="rating-container">
+          <div className="rating-box">
             <div style={{ fontSize: '0.65rem', marginBottom: '0.25rem', opacity: 0.6, fontFamily: 'var(--font-mono)' }}>
               ≤ -0.5
             </div>
@@ -346,7 +363,7 @@ export default function InteractiveScoring() {
             </div>
           </div>
 
-          <div style={{ flex: 1, maxWidth: '120px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="rating-box">
             <div style={{ fontSize: '0.65rem', marginBottom: '0.25rem', opacity: 0.6, fontFamily: 'var(--font-mono)' }}>
               -0.5 to 0.5
             </div>
@@ -368,7 +385,7 @@ export default function InteractiveScoring() {
             </div>
           </div>
 
-          <div style={{ flex: 1, maxWidth: '120px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="rating-box">
             <div style={{ fontSize: '0.65rem', marginBottom: '0.25rem', opacity: 0.6, fontFamily: 'var(--font-mono)' }}>
               0.5 to 0.9
             </div>
@@ -390,7 +407,7 @@ export default function InteractiveScoring() {
             </div>
           </div>
 
-          <div style={{ flex: 1, maxWidth: '120px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="rating-box">
             <div style={{ fontSize: '0.65rem', marginBottom: '0.25rem', opacity: 0.6, fontFamily: 'var(--font-mono)' }}>
               ≥ 1.0
             </div>

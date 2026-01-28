@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import Header from '../components/Header.astro';
+import BackToHome from '../components/BackToHome.astro';
 import Comments from '../components/Comments.astro';
 import '../styles/global.css';
 
@@ -42,7 +42,7 @@ if (ogImage) {
 ---
 
 <BaseLayout
-  title={`${title} | Udo Nkwocha`}
+  title={title}
   description={description}
   ogType="article"
   ogImage={ogImage}
@@ -58,10 +58,9 @@ if (ogImage) {
   <!-- JSON-LD Structured Data -->
   <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify(articleStructuredData)} />
 
-  <Header />
-
-    <main class="px-6 max-w-4xl mx-auto pb-16">
-      <article class="prose prose-lg max-w-none">
+  <main class="px-6 max-w-4xl mx-auto pb-16">
+    <BackToHome />
+    <article class="prose prose-lg max-w-none">
         <header class="mb-8">
           <h1 class="text-3xl font-bold mb-2">{title}</h1>
           <time class="text-sm opacity-70" datetime={pubDate.toISOString()}>
@@ -156,5 +155,13 @@ if (ogImage) {
 
   :global(.blog-content blockquote p:last-child) {
     margin-bottom: 0;
+  }
+
+  /* Mobile responsive fixes */
+  @media (max-width: 480px) {
+    main {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
   }
 </style>

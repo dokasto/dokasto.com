@@ -1,0 +1,47 @@
+---
+// Back to home navigation for blog posts
+---
+
+<nav aria-label="Site navigation" class="back-navigation">
+  <a href="/" class="back-link">
+    <span class="arrow" aria-hidden="true">←</span>
+    <span class="text">Home</span>
+  </a>
+</nav>
+
+<style>
+  .back-navigation {
+    padding: 1.5rem 0 1rem 0;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--color-dark);
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+  }
+
+  .back-link:hover {
+    opacity: 1;
+  }
+
+  .arrow {
+    font-weight: 900;
+    font-size: 1.125rem;
+    line-height: 1;
+    transform: scaleX(1.4);
+    display: inline-block;
+    vertical-align: baseline;
+    position: relative;
+    top: -0.05em;
+  }
+
+  .text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+</style>
