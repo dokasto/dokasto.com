@@ -1,0 +1,16 @@
+YC VIDEO TRANSCRIPT EXTRACTION LOG
+================================================================================
+
+Attempting to extract transcript from: Apten - YC S24 Founder Video (Accepted)
+URL: https://www.youtube.com/watch?v=VYM-lvMI5QY
+
+Working on extracting the transcript via screenshots...
+
+
+Video Status: This video does NOT have transcripts/captions available.
+The video player shows "Subtitles/closed captions unavailable"
+
+Need to try a different YC video that has transcripts enabled.
+
+================================================================================
+
