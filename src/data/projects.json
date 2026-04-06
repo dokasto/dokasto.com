@@ -12,8 +12,8 @@
     },
     {
       "title": "Moments",
-      "github": "https://github.com/dokasto/moments",
-      "description": "Imagine Wordle, but with pictures and AI that runs entirely on your device. It is a game that uses your own photos to generate words that you have to guess, just like Wordle. It ran on iOS and Android."
+      "web": "https://momentsgame.com/",
+      "description": "Imagine Wordle, but with pictures and AI that runs entirely on your device. It is a game that uses your own photos to generate words that you have to guess, just like Wordle."
     },
     {
       "title": "Simple Video Conferencing",
